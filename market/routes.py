@@ -1,7 +1,7 @@
 from market import app
 from flask import render_template, redirect,url_for,flash,request
 from market.models import Item, User
-from market.form import PurchaseForm, RegisterForm, LoginForm, SellForm
+from market.form import PurchaseForm, RegisterForm, LoginForm, SellForm, AddItemForm
 from market import db
 from flask_login import login_user, logout_user, login_required, current_user
 
@@ -89,3 +89,26 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('home_page'))
+
+
+@app.route('/additem', methods = ['GET','POST'])
+@login_required
+def add_item():
+    form = AddItemForm()
+
+    if form.validate_on_submit():
+        item_to_add = Item(name=form.name.data,
+                    price=form.price.data,
+                    barcode=form.barcode.data,
+                    desc=form.description.data)
+        db.session.add(item_to_add)
+        db.session.commit()
+ 
+        flash(f"Success adding {item_to_add.name}" , category = "success")
+        return redirect(url_for("market"))
+
+    if form.errors != {}: #If there are errors from the validations
+        for err_msg in form.errors.values():
+            flash(f'There was an error adding item {err_msg}', category = "danger")
+
+    return render_template('additem.html',form=form)

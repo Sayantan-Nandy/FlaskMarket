@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title%}
+    Add Item to MarketPlace
+{%endblock%}
+
+{% block content%}
+<body>
+    <div class = "container">
+        <form method="POST" class = "form-register" style = "color: white">
+            {{form.hidden_tag()}}
+            <br>
+            <br>
+            <h1 class="h3 mb-3 font-weight-normal">
+                Add New Item to MarketPlace
+            </h1>
+            <br>
+
+            {{form.name.label()}}
+            {{form.name(class="form-control", placeholder="Item Name")}}
+
+            {{form.price.label()}}
+            {{form.price(class="form-control", placeholder="Price")}}
+            
+            {{form.barcode.label()}}
+            {{form.barcode(class="form-control", placeholder="Barcode")}}
+            
+            {{form.description.label()}}
+            {{form.description(class="form-control", placeholder="Description")}}
+            <br>
+            <br>
+            
+            {{form.submit(class="btn btn-block btn-primary", style="width :200px")}}
+            
+        </form>
+    </div>
+</body>  
+{%endblock%}
