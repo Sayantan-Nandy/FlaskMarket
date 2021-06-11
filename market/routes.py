@@ -102,6 +102,7 @@ def add_item():
                     barcode=form.barcode.data,
                     desc=form.description.data)
         db.session.add(item_to_add)
+        current_user.budget += int(item_to_add.price)
         db.session.commit()
  
         flash(f"Success adding {item_to_add.name}" , category = "success")
