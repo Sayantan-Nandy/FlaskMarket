@@ -1,0 +1,77 @@
+<style>
+    .modal-content {
+      background-color: grey
+    }
+  </style>
+
+
+<div class="modal fade" tabindex="-1" id="info-{{i['id']}}" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Info about {{i["name"]}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>{{i["desc"]}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" tabindex="-1" id="purchase-{{i['id']}}" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Buy {{i["name"]}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form method="POST">
+                <br>
+                <h4 class="text-center">Do you want to buy {{i["name"]}} for {{i["price"]}}$ ?</h4>
+                <br>
+                <input name = 'purchase_item' type='hidden' value = '{{i["name"]}}'>
+                {{forms.submit(class="btn btn-block btn-outline-success")}}
+                <br>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" tabindex="-1" id="sell-{{i['id']}}" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Sell {{i["name"]}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form method="POST">
+                <br>
+                <h4 class="text-center">Do you want to sell {{i["name"]}} ?</h4>
+                <br>
+                <input name = 'sell_item' type='hidden' value = '{{i["name"]}}'>
+                {{sell_form.submit(class="btn btn-block btn-outline-danger")}}
+                <br>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
