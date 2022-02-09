@@ -6,7 +6,7 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///marketplace.db'
-app.config['SECRET_KEY'] = '3db71b2131c78a71ec35bbc1'
+app.config['SECRET_KEY'] = 'Enter Key'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
